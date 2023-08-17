@@ -36,6 +36,8 @@
 
 ## Comandos
 
+### Imagenes
+
 ```powershell
 # listar imagenes
 docker images
@@ -48,20 +50,28 @@ docker pull <REPOSITORY>:<TAG>
 # ejecutar imagen
 docker run PUERTO:PUERTO <REPOSITORY>:<TAG>
   # --rm = remove container when it exits
-  # --publish = publish container ports to host
   # --detach = run container in background
+  # --publish = bind ports HOST:CONTAINER
+  # --volume = bind folder HOST:CONTAINER
+  # --network NETWORK --network-alias CONTAINER-ALIAS = connect to network
   docker run --rm mcr.microsoft.com/dotnet/samples:dotnetapp
   docker run --detach --rm --publish 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # eliminar imagen
-docker image rm <REPOSITORY>:<TAG>
-  docker image rm mcr.microsoft.com/dotnet/samples:dotnetapp
-  docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
+docker rmi <REPOSITORY>:<TAG>
+  docker rmi mcr.microsoft.com/dotnet/samples:dotnetapp
+  docker rmi mcr.microsoft.com/dotnet/samples:aspnetapp
 ```
+
+### Contenedores
 
 ```powershell
 # listar contenedores
-docker ps
+docker ps --all
+
+# crear contenedor
+docker create <REPOSITORY>:<TAG>
+  docker create mcr.microsoft.com/dotnet/samples:dotnetapp
 
 # inciar contenedor
 docker start <ID>
@@ -77,6 +87,8 @@ docker logs <ID>
   docker logs e06f374c7f2d
 ```
 
+### Build
+
 ```powershell
 # construir imagen
 docker build --tag <REPOSITORY>:<TAG> .
@@ -85,4 +97,25 @@ docker build --tag <REPOSITORY>:<TAG> .
 # publicar imagen
 docker push <REPOSITORY>:<TAG>
   docker push lusalas16/welcome-to-docker:latest
+```
+
+### Network
+
+```powershell
+# crear red
+docker network create <NETWORK>
+```
+
+### Exec
+
+```powershell
+# ejecutar comando en contenedor
+docker exec -it <ID> <COMMAND> <PARAMETERS>
+```
+
+### Compose
+
+```powershell
+docker-compose up
+docker-compose down
 ```
