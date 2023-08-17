@@ -11,7 +11,7 @@
 - Learn
   - [Learn how to containerize a .NET Core application](https://learn.microsoft.com/en-us/dotnet/core/docker/build-container)
   - [Learn how to containerize a ASP.NET Core application](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/building-net-docker-images)
-  - [Container Tools in Visual Studio] (https://learn.microsoft.com/en-us/visualstudio/containers)
+  - [Container Tools in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/containers)
 - Images
   - [DockerHub .NET Images](https://hub.docker.com/_/microsoft-dotnet/)
   - [DockerHub .NET Framework Images](https://hub.docker.com/_/microsoft-dotnet-framework)
