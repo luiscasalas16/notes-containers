@@ -10,7 +10,8 @@
 
 - [Get-Started Docker](https://docs.docker.com/get-started/)
 - [Get-Started Docker Desktop](https://docs.docker.com/get-started/hands-on-overview)
-- [Docker command line](https://docs.docker.com/engine/reference/commandline/cli)
+- [Docker command line reference](https://docs.docker.com/engine/reference/commandline/cli/)
+- [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 
 ## Instalación
@@ -19,7 +20,7 @@
   - ejecutar `wsl --install`
   - reiniciar
   - establecer usuario y contraseña para wsl
-- habilitar docker windows [windowscontainers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment)
+- habilitar docker windows [windows containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment)
   - ejecutar `Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All`
 - instalar [docker](https://docs.docker.com/desktop/install/windows-install)
   - descartar [Docker Desktop Installer.exe](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
@@ -73,7 +74,7 @@ docker ps --all
 docker create <REPOSITORY>:<TAG>
   docker create mcr.microsoft.com/dotnet/samples:dotnetapp
 
-# inciar contenedor
+# iniciar contenedor
 docker start <ID>
   docker start e06f374c7f2d
 
