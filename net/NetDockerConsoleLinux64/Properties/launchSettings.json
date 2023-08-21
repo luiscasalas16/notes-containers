@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NetDockerConsoleLinux64": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
