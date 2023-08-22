@@ -28,6 +28,9 @@ namespace NetDockerConsoleWindows32
             // OSArchitecture
             Console.WriteLine($"{nameof(RuntimeInformation.OSArchitecture)}: {RuntimeInformation.OSArchitecture}");
 
+            // ProcessArchitecture
+            Console.WriteLine($"{nameof(RuntimeInformation.ProcessArchitecture)}: {RuntimeInformation.ProcessArchitecture}");
+
             // FrameworkDescription
             Console.WriteLine($"{nameof(RuntimeInformation.FrameworkDescription)}: {RuntimeInformation.FrameworkDescription}");
 
