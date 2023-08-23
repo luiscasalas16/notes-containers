@@ -1,6 +1,6 @@
 #NetDockerConsoleWindows32
 
-FROM dotnet/runtime/x86:7.0.10-windowsservercore-ltsc2022 AS base
+FROM lusalas16/dotnet/runtime/x86:7.0.10-windowsservercore-ltsc2022 AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build

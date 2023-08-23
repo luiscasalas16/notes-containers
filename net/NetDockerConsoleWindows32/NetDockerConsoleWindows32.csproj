@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <PlatformTarget>x86</PlatformTarget>
+    <DockerDebuggeeProgram>C:\Program Files (x86)\dotnet\dotnet.exe</DockerDebuggeeProgram>
   </PropertyGroup>
 
   <ItemGroup>
