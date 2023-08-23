@@ -1,0 +1,37 @@
+#NetDockerConsoleWindows64
+# **.NET information
+# Version: 7.0.10
+# FrameworkDescription: .NET 7.0.10
+# Libraries version: 7.0.10
+# Libraries hash: a6dbb800a47735bde43187350fd3aff4071c7f9c
+#
+# **Environment information
+# ProcessorCount: 2
+# ProcessArchitecture: X64
+# OSArchitecture: X64
+# OSDescription: Microsoft Windows 10.0.17763
+# OSVersion: Microsoft Windows NT 10.0.17763.0
+# OSPlatform: Windows
+# UserName: ContainerUser
+# MachineName: 9D334F587805
+# Is64BitOperatingSystem: True
+# Is64BitProcess: True
+
+FROM mcr.microsoft.com/dotnet/runtime:7.0 AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+COPY ["NetDockerConsoleWindows64/NetDockerConsoleWindows64.csproj", "NetDockerConsoleWindows64/"]
+RUN dotnet restore "NetDockerConsoleWindows64/NetDockerConsoleWindows64.csproj"
+COPY . .
+WORKDIR "/src/NetDockerConsoleWindows64"
+RUN dotnet build "NetDockerConsoleWindows64.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "NetDockerConsoleWindows64.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "NetDockerConsoleWindows64.dll"]

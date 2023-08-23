@@ -1,0 +1,38 @@
+#NetDockerConsoleLinux64
+# **.NET information
+# Version: 7.0.10
+# FrameworkDescription: .NET 7.0.10
+# Libraries version: 7.0.10
+# Libraries hash: a6dbb800a47735bde43187350fd3aff4071c7f9c
+#
+# **Environment information
+# ProcessorCount: 12
+# ProcessArchitecture: X64
+# OSArchitecture: X64
+# OSDescription: Linux 5.15.90.1-microsoft-standard-WSL2 #1 SMP Fri Jan 27 02:56:13 UTC 2023
+# OSVersion: Unix 5.15.90.1
+# OSPlatform: Linux
+# UserName: root
+# MachineName: 6810b1ab0fdf
+# Is64BitOperatingSystem: True
+# Is64BitProcess: True
+# Linux Pretty Name: Debian GNU/Linux 11 (bullseye)
+
+FROM mcr.microsoft.com/dotnet/runtime:7.0 AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+COPY ["NetDockerConsoleLinux64/NetDockerConsoleLinux64.csproj", "NetDockerConsoleLinux64/"]
+RUN dotnet restore "NetDockerConsoleLinux64/NetDockerConsoleLinux64.csproj"
+COPY . .
+WORKDIR "/src/NetDockerConsoleLinux64"
+RUN dotnet build "NetDockerConsoleLinux64.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "NetDockerConsoleLinux64.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "NetDockerConsoleLinux64.dll"]
