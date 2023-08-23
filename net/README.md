@@ -12,7 +12,9 @@
   - [Learn how to containerize a .NET Core application](https://learn.microsoft.com/en-us/dotnet/core/docker/build-container)
   - [Learn how to containerize a ASP.NET Core application](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/building-net-docker-images)
   - [Container Tools in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/containers)
-  - [How to customize Docker containers in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/containers/container-build)
+    - [How to customize Docker containers in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/containers/container-build)
+    - [Container Tools build properties](https://learn.microsoft.com/en-us/visualstudio/containers/container-msbuild-properties)
+    - [Container Tools launch settings](https://learn.microsoft.com/en-us/visualstudio/containers/container-launch-settings)
 - Images
   - [DockerHub .NET Images](https://hub.docker.com/_/microsoft-dotnet/)
   - [DockerHub .NET Framework Images](https://hub.docker.com/_/microsoft-dotnet-framework)
@@ -20,5 +22,8 @@
   - [Container Images](https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-base-images)
   - [Modernize .NET applications with Azure cloud and Windows Containers](https://learn.microsoft.com/en-us/dotnet/architecture/modernize-with-azure-containers)
 
-https://devblogs.microsoft.com/dotnet/updates-to-container-support-in-the-dotnet-sdk/
-https://devblogs.microsoft.com/dotnet/securing-containers-with-rootless/
+## Artículos
+
+- https://devblogs.microsoft.com/dotnet/updates-to-container-support-in-the-dotnet-sdk/
+- https://devblogs.microsoft.com/dotnet/securing-containers-with-rootless/
+- https://github.com/dotnet/dotnet-docker/blob/main/documentation/scenarios/installing-dotnet.md
