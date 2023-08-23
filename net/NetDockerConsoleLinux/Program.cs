@@ -1,13 +1,13 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace NetDockerConsoleWindows64
+namespace NetDockerConsoleLinux
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("NetDockerConsoleWindows64");
+            Console.WriteLine("NetDockerConsoleLinux");
 
             AssemblyInformationalVersionAttribute assemblyInformation = ((AssemblyInformationalVersionAttribute[])typeof(object).Assembly.GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false))[0];
             string[] informationalVersionSplit = assemblyInformation.InformationalVersion.Split('+');

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "NetDockerConsoleWindows64": {
+    "NetDockerConsoleWindows": {
       "commandName": "Project"
     },
     "WSL": {
