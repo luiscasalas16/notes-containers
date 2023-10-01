@@ -37,11 +37,11 @@
 
 ## Comandos
 
-### Imagenes
+### Imágenes
 
 ```powershell
-# listar imagenes
-docker images
+# listar imágenes
+docker image ls
 
 # obtener imagen
 docker pull <REPOSITORY>:<TAG>
@@ -49,43 +49,53 @@ docker pull <REPOSITORY>:<TAG>
   docker pull mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # ejecutar imagen
-docker run PUERTO:PUERTO <REPOSITORY>:<TAG>
+docker container run <REPOSITORY>:<TAG>
   # --rm = remove container when it exits
   # --detach = run container in background
   # --publish = bind ports HOST:CONTAINER
   # --volume = bind folder HOST:CONTAINER
   # --network NETWORK --network-alias CONTAINER-ALIAS = connect to network
-  docker run --rm mcr.microsoft.com/dotnet/samples:dotnetapp
-  docker run --detach --rm --publish 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
+  # --env = set environment variables
+  docker container run --rm mcr.microsoft.com/dotnet/samples:dotnetapp
+  docker container run --rm --detach --publish 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # eliminar imagen
-docker rmi <REPOSITORY>:<TAG>
-  docker rmi mcr.microsoft.com/dotnet/samples:dotnetapp
-  docker rmi mcr.microsoft.com/dotnet/samples:aspnetapp
+docker image rm <REPOSITORY>:<TAG> | <ID>
+  docker image rm mcr.microsoft.com/dotnet/samples:dotnetapp
+  docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
+
 ```
 
 ### Contenedores
 
 ```powershell
 # listar contenedores
-docker ps --all
+docker container ls --all
 
 # crear contenedor
-docker create <REPOSITORY>:<TAG>
-  docker create mcr.microsoft.com/dotnet/samples:dotnetapp
+docker container create <REPOSITORY>:<TAG>
+  docker container create mcr.microsoft.com/dotnet/samples:dotnetapp
 
 # iniciar contenedor
-docker start <ID>
-  docker start e06f374c7f2d
+docker container start <ID>
+  docker container start 123
 
 # detener contenedor
-docker stop <ID>
-  docker stop e06f374c7f2d
+docker container stop <ID>
+  docker container stop 123
+
+# elimina contenedor
+docker container rm <ID>
+  # --force = force the removal of a running container
+  docker container rm 123
+
+# elimina contenedores detenidos
+docker container prune
 
 # ver logs de contenedor
-docker logs <ID>
+docker container logs <ID>
   # --follow = continue follow the new output from the container
-  docker logs e06f374c7f2d
+  docker container logs 123
 ```
 
 ### Build
@@ -100,11 +110,39 @@ docker push <REPOSITORY>:<TAG>
   docker push lusalas16/welcome-to-docker:latest
 ```
 
+### Volumes
+
+```powershell
+# listar volúmenes
+docker volume ls
+
+# inspeccionar volumen
+docker volume inspect <VOLUME NAME>
+  docker volume inspect test-volume
+
+# crear volumen
+docker volume create <VOLUME NAME>
+  docker volume create test-volume
+```
+
 ### Network
 
 ```powershell
+# listar redes
+docker network ls
+
+# inspeccionar red
+docker network inspect <NETWORK NAME>|<NETWORK ID>
+  docker network inspect test-network
+
 # crear red
-docker network create <NETWORK>
+docker network create <NETWORK NAME>|<NETWORK ID>
+  docker network create test-network
+
+# conectar red
+docker network connect <NETWORK NAME>|<NETWORK ID> <CONTAINER NAME>|<CONTAINER ID>
+  docker network connect test-network phpmyadmin
+  docker network connect test-network some-mariadb
 ```
 
 ### Exec
@@ -119,4 +157,42 @@ docker exec -it <ID> <COMMAND> <PARAMETERS>
 ```powershell
 docker-compose up
 docker-compose down
+```
+
+### Ejemplos
+
+```powershell
+# postgres
+docker pull postgres:15.4-bookworm
+docker container run `
+  --detach `
+  --name some-postgres `
+  --publish 5432:5432 `
+  --env POSTGRES_USER=example-user --env POSTGRES_PASSWORD=prueba123* `
+  postgres:15.4-bookworm
+
+# mariadb
+docker pull mariadb:11.1.2-jammy
+docker container run `
+  --detach `
+  --name some-mariadb `
+  --publish 3306:3306 `
+  --env MARIADB_USER=example-user `
+  --env MARIADB_PASSWORD=prueba123* `
+  --env MARIADB_ROOT_PASSWORD=prueba123* `
+  --env MARIADB_DATABASE=test-db `
+  --volume test-volume:/var/lib/mysql `
+  --network test-network `
+  mariadb:11.1.2-jammy
+
+#phpmyadmin
+docker pull phpmyadmin:5.2.1-apache
+docker container run `
+  --detach `
+  --name phpmyadmin `
+  --publish 8080:80 `
+  --env PMA_ARBITRARY=1 `
+  --network test-network `
+  phpmyadmin:5.2.1-apache
+
 ```
