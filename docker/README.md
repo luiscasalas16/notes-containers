@@ -155,7 +155,9 @@ docker exec -it <ID> <COMMAND> <PARAMETERS>
 ### Compose
 
 ```powershell
+# iniciar docker-compose
 docker-compose up
+# detener docker-compose
 docker-compose down
 ```
 
