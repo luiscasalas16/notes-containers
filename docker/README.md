@@ -13,6 +13,7 @@
 - [Docker command line reference](https://docs.docker.com/engine/reference/commandline/cli/)
 - [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
+- [Docker cheat-sheet](https://devtalles.com/files/docker-cheat-sheet.pdf)
 
 ## Instalación
 
@@ -156,45 +157,8 @@ docker exec -it <ID> <COMMAND> <PARAMETERS>
 
 ```powershell
 # iniciar docker-compose
-docker-compose up
+  # --detach = run containers in the background
+docker-compose --file "example-databases-2.yml" up --detach
 # detener docker-compose
 docker-compose down
-```
-
-### Ejemplos
-
-```powershell
-# postgres
-docker pull postgres:15.4-bookworm
-docker container run `
-  --detach `
-  --name some-postgres `
-  --publish 5432:5432 `
-  --env POSTGRES_USER=example-user --env POSTGRES_PASSWORD=prueba123* `
-  postgres:15.4-bookworm
-
-# mariadb
-docker pull mariadb:11.1.2-jammy
-docker container run `
-  --detach `
-  --name some-mariadb `
-  --publish 3306:3306 `
-  --env MARIADB_USER=example-user `
-  --env MARIADB_PASSWORD=prueba123* `
-  --env MARIADB_ROOT_PASSWORD=prueba123* `
-  --env MARIADB_DATABASE=test-db `
-  --volume test-volume:/var/lib/mysql `
-  --network test-network `
-  mariadb:11.1.2-jammy
-
-#phpmyadmin
-docker pull phpmyadmin:5.2.1-apache
-docker container run `
-  --detach `
-  --name phpmyadmin `
-  --publish 8080:80 `
-  --env PMA_ARBITRARY=1 `
-  --network test-network `
-  phpmyadmin:5.2.1-apache
-
 ```

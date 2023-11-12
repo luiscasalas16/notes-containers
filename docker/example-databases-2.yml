@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  some-postgres:
+    container_name: some-postgres
+    image: postgres:16.0-bookworm
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=example-user
+      - POSTGRES_PASSWORD=prueba123*
+
+  some-mariadb:
+    container_name: some-mariadb
+    image: mariadb:11.1.2-jammy
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-volume:/var/lib/mysql
+    environment:
+      - MARIADB_USER=example-user
+      - MARIADB_PASSWORD=prueba123*
+      - MARIADB_ROOT_PASSWORD=prueba123*
+      - MARIADB_DATABASE=mariadb
+
+  cloudbeaver:
+    container_name: cloudbeaver
+    depends_on:
+      - some-postgres
+      - some-mariadb
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - "8080:8978"
+    volumes:
+      - cloudbeaver-volume:/opt/cloudbeaver/workspace
+
+volumes:
+  postgres-volume:
+    external: true
+  mariadb-volume:
+    external: true
+  cloudbeaver-volume:
+    external: true
