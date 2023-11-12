@@ -12,6 +12,7 @@
 - [Get-Started Docker Desktop](https://docs.docker.com/get-started/hands-on-overview)
 - [Docker command line reference](https://docs.docker.com/engine/reference/commandline/cli/)
 - [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+- [Docker dockercompose reference](https://docs.docker.com/compose/compose-file/)
 - [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 - [Docker cheat-sheet](https://devtalles.com/files/docker-cheat-sheet.pdf)
 
@@ -158,7 +159,7 @@ docker exec -it <ID> <COMMAND> <PARAMETERS>
 ```powershell
 # iniciar docker-compose
   # --detach = run containers in the background
-docker-compose --file "example-databases-2.yml" up --detach
+docker-compose --file ".\docker\example-databases-2.yml" up --detach
 # detener docker-compose
-docker-compose down
+docker-compose --file ".\docker\example-databases-2.yml" down
 ```

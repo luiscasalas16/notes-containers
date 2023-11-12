@@ -38,8 +38,8 @@ services:
 
 volumes:
   postgres-volume:
-    external: true
+    name: "postgres-volume"
   mariadb-volume:
-    external: true
+    name: "mariadb-volume"
   cloudbeaver-volume:
-    external: true
+    name: "cloudbeaver-volume"
