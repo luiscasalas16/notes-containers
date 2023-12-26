@@ -125,6 +125,7 @@ docker volume inspect <VOLUME NAME>
 # crear volumen
 docker volume create <VOLUME NAME>
   docker volume create test-volume
+  docker volume create test-volume --opt o=bind --opt type=none --opt device=C:\test-volume
 ```
 
 ### Network

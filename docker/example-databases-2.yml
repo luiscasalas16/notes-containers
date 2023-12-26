@@ -43,21 +43,21 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: .\data\postgres
+      device: .\.local_data\postgres
   mariadb-volume:
     name: "mariadb-volume"
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: .\data\mariadb
+      device: .\.local_data\mariadb
   cloudbeaver-volume:
     name: "cloudbeaver-volume"
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: .\data\cloudbeaver
+      device: .\.local_data\cloudbeaver
 
   # opción 1 volumen en sección de services
   # services:
