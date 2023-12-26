@@ -39,7 +39,51 @@ services:
 volumes:
   postgres-volume:
     name: "postgres-volume"
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: .\data\postgres
   mariadb-volume:
     name: "mariadb-volume"
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: .\data\mariadb
   cloudbeaver-volume:
     name: "cloudbeaver-volume"
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: .\data\cloudbeaver
+
+  # opción 1 volumen en sección de services
+  # services:
+  #   some-database:
+  #     volumes:
+  #       - .\data\some-database:/var/lib/some-database/data
+
+  # opción 2 volumen en sección de volúmenes
+  # services:
+  #   some-database:
+  #     volumes:
+  #       - some-database-volume:/var/lib/some-database/data
+  # volumes:
+  #   some-database-volume:
+  #     name: "some-database-volume"
+  #     driver: local
+  #     driver_opts:
+  #       o: bind
+  #       type: none
+  #       device: .\data\some-database
+
+  # opción 3 volumen externo
+  # services:
+  #   some-database:
+  #     volumes:
+  #       - some-database-volume:/var/lib/some-database/data
+  # volumes:
+  #   some-database-volume:
+  #     external: true
