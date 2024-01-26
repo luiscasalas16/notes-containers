@@ -4,7 +4,10 @@
 - [Instalación](#instalación)
 - [Comandos](#comandos)
 
----
+## Fundamentos
+
+- [Docker, Definición](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/docker-defined)
+- [Docker, Terminología](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/docker-terminology)
 
 ## Documentación
 
@@ -13,8 +16,8 @@
 - [Docker command line reference](https://docs.docker.com/engine/reference/commandline/cli/)
 - [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker dockercompose reference](https://docs.docker.com/compose/compose-file/)
-- [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 - [Docker cheat-sheet](https://devtalles.com/files/docker-cheat-sheet.pdf)
+- [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 
 ## Instalación
 
