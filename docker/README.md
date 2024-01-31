@@ -40,6 +40,11 @@
     - Kernel version: 5.15.90.1
     - Windows version: 10.0.22621.1848
 
+## Cursos
+
+- [Aprende Docker ahora! - HolaMundo](https://www.youtube.com/watch?v=4Dko5W96WHg)
+- [Docker - Guía práctica de uso para desarrolladores - Fernando Herrera](https://www.udemy.com/course/docker-guia-practica/)
+
 ## Comandos
 
 ### Imágenes
@@ -49,12 +54,12 @@
 docker image ls
 
 # obtener imagen
-docker pull <REPOSITORY>:<TAG>
+docker pull <IMAGE>:<TAG>
   docker pull mcr.microsoft.com/dotnet/samples:dotnetapp
   docker pull mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # ejecutar imagen
-docker container run <REPOSITORY>:<TAG>
+docker container run <IMAGE>:<TAG>
   # --rm = remove container when it exits
   # --detach = run container in background
   # --publish = bind ports HOST:CONTAINER
@@ -65,7 +70,7 @@ docker container run <REPOSITORY>:<TAG>
   docker container run --rm --detach --publish 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # eliminar imagen
-docker image rm <REPOSITORY>:<TAG> | <ID>
+docker image rm <IMAGE>:<TAG> | <ID>
   docker image rm mcr.microsoft.com/dotnet/samples:dotnetapp
   docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
 
@@ -78,12 +83,20 @@ docker image rm <REPOSITORY>:<TAG> | <ID>
 docker container ls --all
 
 # crear contenedor
-docker container create <REPOSITORY>:<TAG>
+docker container create <IMAGE>:<TAG>
   docker container create mcr.microsoft.com/dotnet/samples:dotnetapp
 
 # iniciar contenedor
 docker container start <ID>
   docker container start 123
+
+# crear e iniciar contenedor
+docker container run <IMAGE>:<TAG>
+  # --d = ...
+  docker container run mcr.microsoft.com/dotnet/samples:dotnetapp
+
+# conectarse a contenedor
+docker exec -it <ID> /bin/sh
 
 # detener contenedor
 docker container stop <ID>
@@ -107,12 +120,43 @@ docker container logs <ID>
 
 ```powershell
 # construir imagen
-docker build --tag <REPOSITORY>:<TAG> .
-  docker build --tag lusalas16/welcome-to-docker:latest .
+docker build --tag <IMAGE>:<TAG> .
+  docker build --tag welcome-to-docker:latest .
 
 # publicar imagen
-docker push <REPOSITORY>:<TAG>
-  docker push lusalas16/welcome-to-docker:latest
+docker login
+
+docker push <IMAGE>:<TAG>
+  docker push welcome-to-docker:latest
+
+docker logout
+
+# tagear imagen
+docker image tag <SOURCE_IMAGE>:<TAG> <TARGET_IMAGE>:<TAG>
+  docker image tag welcome-to-docker:latest welcome-to-docker:previous
+```
+
+### BuildX
+
+```powershell
+
+# listar builder
+docker buildx ls
+
+# crear builder
+docker buildx create --name mybuilder --driver docker-container --bootstrap
+
+# usar builder
+docker buildx use mybuilder
+
+# construir y publicar imagen
+docker buildx build --platform linux/amd64,linux/arm64 --tag lusalas16/hello --push .\docker\.
+
+# usar builder
+docker buildx use default
+
+# eliminar builder
+docker buildx rm mybuilder
 ```
 
 ### Volumes
