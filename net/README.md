@@ -20,3 +20,5 @@
   - [Modernize .NET applications with Azure cloud and Windows Containers](https://learn.microsoft.com/en-us/dotnet/architecture/modernize-with-azure-containers)
 - Libros
   - [.NET Microservices Architecture Guidance](https://dotnet.microsoft.com/en-us/learn/aspnet/microservices-architecture)
+    - [.NET Microservices: Architecture for Containerized .NET Applications](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/)
+    - [Architect Modern Web Applications with ASP.NET Core and Azure](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/)

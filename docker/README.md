@@ -17,7 +17,6 @@
 - [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker dockercompose reference](https://docs.docker.com/compose/compose-file/)
 - [Docker cheat-sheet](https://devtalles.com/files/docker-cheat-sheet.pdf)
-- [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 
 ## Instalación
 
@@ -43,6 +42,7 @@
 ## Cursos
 
 - [Aprende Docker ahora! - HolaMundo](https://www.youtube.com/watch?v=4Dko5W96WHg)
+- [DOCKER De NOVATO a PRO!, Pelado Nerd, 1 hora](https://www.youtube.com/watch?v=CV_Uf3Dq-EU)
 - [Docker - Guía práctica de uso para desarrolladores - Fernando Herrera](https://www.udemy.com/course/docker-guia-practica/)
 
 ## Comandos
@@ -210,4 +210,13 @@ docker exec -it <ID> <COMMAND> <PARAMETERS>
 docker-compose --file ".\docker\example-databases-2.yml" up --detach
 # detener docker-compose
 docker-compose --file ".\docker\example-databases-2.yml" down
+```
+
+### System
+
+```powershell
+# ver uso de recursos
+docker system df
+# borrar containers, networks, images y volumes
+docker system prune --all --volumes
 ```
