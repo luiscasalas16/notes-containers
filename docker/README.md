@@ -74,6 +74,12 @@ docker image rm <IMAGE>:<TAG> | <ID>
   docker image rm mcr.microsoft.com/dotnet/samples:dotnetapp
   docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
 
+# exportar imagen
+docker image save -o "C:\<IMAGE>.tar" <IMAGE>:<TAG>
+
+# importar imagen
+docker load -i "C:\<IMAGE>.tar"
+
 ```
 
 ### Contenedores
@@ -97,6 +103,10 @@ docker container run <IMAGE>:<TAG>
 
 # conectarse a contenedor
 docker exec -it <ID> /bin/sh
+
+# iniciar contenedor
+docker container start <ID>
+  docker container start 123
 
 # detener contenedor
 docker container stop <ID>
