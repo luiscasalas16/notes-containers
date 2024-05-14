@@ -20,24 +20,53 @@
 
 ## Instalación
 
-- habilitar docker linux [wsl](https://learn.microsoft.com/en-us/windows/wsl/install)
-  - ejecutar `wsl --install`
+- si la instalación se va a realizar en una máquina virtual se debe habilitar la virtualización.
+
+  - para Hyper-V se deje ejecutar el siguiente comando para la máquina virtual.
+
+    ```powershell
+    Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
+    ```
+
+  - para VMware se debe habilitar la opción "Processors" -> "Virtualize intel VT-x/EPT or AMD-V/RVI" en la máquina virtual.
+
+- si se van a utilizar contenedores en linux, habilitar docker linux [wsl](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+  - ejecutar
+
+    ```powershell
+    wsl --install
+    ```
+
   - reiniciar
   - establecer usuario y contraseña para wsl
-- habilitar docker windows [windows containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment)
-  - ejecutar `Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All`
+
+- si se van a utilizar contenedores en windows, habilitar docker windows [windows containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment)
+
+  - ejecutar
+
+    ```powershell
+    Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All
+    ```
+
 - instalar [docker](https://docs.docker.com/desktop/install/windows-install)
   - descartar [Docker Desktop Installer.exe](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
   - ejecutar `Docker Desktop Installer.exe`
   - reiniciar
 - verificar
-  - `wsl --status`
-    - Default Distribution: Ubuntu
-    - Default Version: 2
-  - `wsl --version`
-    - WSL version: 1.2.5.0
-    - Kernel version: 5.15.90.1
-    - Windows version: 10.0.22621.1848
+
+  ```powershell
+  wsl --status
+  # - Default Distribution: Ubuntu
+  # - Default Version: 2
+  ```
+
+  ```powershell
+  wsl --version
+  # - WSL version: 1.2.5.0
+  # - Kernel version: 5.15.90.1
+  # - Windows version: 10.0.22621.1848
+  ```
 
 ## Cursos
 
@@ -67,7 +96,7 @@ docker container run <IMAGE>:<TAG>
   # --network NETWORK --network-alias CONTAINER-ALIAS = connect to network
   # --env = set environment variables
   docker container run --rm mcr.microsoft.com/dotnet/samples:dotnetapp
-  docker container run --rm --detach --publish 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
+  docker container run --rm --detach --publish 8080:8080 mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # eliminar imagen
 docker image rm <IMAGE>:<TAG> | <ID>
