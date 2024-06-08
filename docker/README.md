@@ -104,11 +104,10 @@ docker image rm <IMAGE>:<TAG> | <ID>
   docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
 
 # exportar imagen
-docker image save -o "C:\<IMAGE>.tar" <IMAGE>:<TAG>
+docker image save -o "C:\images\<IMAGE>.tar" <IMAGE>:<TAG>
 
 # importar imagen
-docker load -i "C:\<IMAGE>.tar"
-
+docker load -i "C:\images\<IMAGE>.tar"
 ```
 
 ### Contenedores
