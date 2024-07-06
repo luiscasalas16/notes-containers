@@ -68,8 +68,8 @@ volumes:
   # opción 2 volumen en sección de volúmenes
   # services:
   #   some-database:
-  # volumes:
-  #   some-database-volume:/var/lib/some-database/data
+  #     volumes:
+  #       - some-database-volume:/var/lib/some-database/data
   # volumes:
   #   some-database-volume:
   #     name: "some-database-volume"
