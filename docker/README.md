@@ -18,6 +18,7 @@
 - [Docker dockercompose reference](https://docs.docker.com/compose/compose-file/)
 - [Docker cheat-sheet 1](https://devtalles.com/files/docker-cheat-sheet.pdf)
 - [Docker cheat-sheet 2](https://collabnix.com/docker-cheatsheet/)
+- [Docker Full Course For .NET Developers](https://www.youtube.com/watch?v=cWMztQwIQNs)
 
 ## Instalación
 
