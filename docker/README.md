@@ -16,7 +16,8 @@
 - [Docker command line reference](https://docs.docker.com/engine/reference/commandline/cli/)
 - [Docker dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker dockercompose reference](https://docs.docker.com/compose/compose-file/)
-- [Docker cheat-sheet](https://devtalles.com/files/docker-cheat-sheet.pdf)
+- [Docker cheat-sheet 1](https://devtalles.com/files/docker-cheat-sheet.pdf)
+- [Docker cheat-sheet 2](https://collabnix.com/docker-cheatsheet/)
 
 ## Instalación
 
